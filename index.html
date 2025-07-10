@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wilayah dengan Checkbox dan Total</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- SheetJS (xlsx.js) for Excel export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <style>
+    /* Basic body styling */
+    body {
+      background-color: #f8fafc; /* Light gray background */
+      font-family: 'Inter', sans-serif; /* Using Inter font */
+    }
+    /* Table styling */
+    table {
+      border-collapse: collapse; /* Collapse borders for a clean look */
+      width: 100%; /* Full width tables */
+      border-radius: 0.5rem; /* Rounded corners for the table */
+      overflow: hidden; /* Ensures rounded corners are applied to content */
+    }
+    th, td {
+      padding: 6px 10px; /* Padding for table cells */
+      border: 1px solid #ddd; /* Light gray border */
+      font-size: 0.9rem; /* Smaller font size for table content */
+    }
+    th {
+      background-color: #f3f4f6; /* Light gray background for table headers */
+      font-weight: bold; /* Bold text for headers */
+      text-align: left; /* Left-align header text */
+    }
+    /* Styling for the main wilayah title (section header) */
+    .wilayah-title {
+      font-weight: 700; /* Extra bold font */
+      font-style: italic; /* Italic text */
+      padding: 8px 12px; /* Padding around the title */
+      border-radius: 6px; /* Slightly rounded corners */
+      margin-bottom: 4px; /* Margin below the title */
+      display: flex; /* Flexbox for alignment */
+      align-items: center; /* Vertically align items */
+      gap: 12px; /* Space between checkbox and text */
+      font-size: 1.1rem; /* Larger font size */
+      user-select: none; /* Prevent text selection */
+    }
+    /* Specific color styles for each wilayah title */
+    .pucuk { background-color: #d1fae5; color: #065f46; } /* Light green */
+    .tanjung { background-color: #22d3ee; color: #05475e; } /* Light blue */
+    .banyulegi { background-color: #0ea5e9; color: white; } /* Blue */
+    .sekiping { background-color: #fca5a5; color: #7f1d1d; } /* Light red */
+    .magersari { background-color: #fcd1a5; color: #b91c1c; font-weight: 600; font-style: italic; } /* Light orange */
+    .brayublandong { background-color: #fca5a5; color: #7f1d1d; font-weight: 600; font-style: italic; } /* Light red */
+    .sumberwuluh { background-color: #fcd1a5; color: #b45309; font-weight: 600; font-style: italic; } /* Orange */
+    .lingsir { background-color: #d1e5fa; color: #1d5f7f; font-weight: 600; font-style: italic; } /* Light blue-gray */
+    .belahanrejo { background-color: #e5d1fa; color: #5f1d7f; font-weight: 600; font-style: italic; } /* Light purple */
+    .madureso { background-color: #fae5d1; color: #7f5c1d; font-weight: 600; font-style: italic; } /* Light gold */
+
+    /* Styling for checkbox labels */
+    .checkbox-label {
+      cursor: pointer; /* Pointer cursor on hover */
+      font-weight: 600; /* Semi-bold font */
+      user-select: none; /* Prevent text selection */
+      display: flex; /* Flexbox for alignment */
+      align-items: center; /* Vertically align items */
+      gap: 6px; /* Space between checkbox and text */
+      font-size: 0.95rem; /* Slightly smaller font size */
+    }
+    /* Styling for the total row in the table footer */
+    .total-row {
+      font-weight: bold; /* Bold text */
+      color: #4a5568; /* Gray color for total */
+      background-color: #e2e8f0; /* Slightly darker background for total row */
+    }
+    /* Styling for the grand total section */
+    .grand-total-section {
+      background-color: #e0f2fe; /* Light blue background */
+      border: 1px solid #90cdf4; /* Blue border */
+      border-radius: 0.75rem; /* More rounded corners */
+      padding: 1.5rem; /* More padding */
+      margin-top: 2rem; /* Margin from previous sections */
+      text-align: center; /* Center align text */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+    .grand-total-section h2 {
+      font-size: 1.75rem; /* Larger font for heading */
+      font-weight: 800; /* Extra bold */
+      color: #1e40af; /* Darker blue color */
+      margin-bottom: 0.75rem; /* Margin below heading */
+    }
+    .grand-total-section .grand-total-amount {
+      font-size: 2.5rem; /* Very large font for amount */
+      font-weight: 900; /* Black font weight */
+      color: #1d4ed8; /* Strong blue color */
+    }
+    .export-button {
+      background-color: #4CAF50; /* Green background */
+      color: white; /* White text */
+      padding: 10px 20px; /* Padding */
+      border: none; /* No border */
+      border-radius: 8px; /* Rounded corners */
+      cursor: pointer; /* Pointer cursor on hover */
+      font-size: 1rem; /* Font size */
+      font-weight: bold; /* Bold text */
+      transition: background-color 0.3s ease; /* Smooth transition */
+      margin-top: 1.5rem; /* Margin above the button */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+    .export-button:hover {
+      background-color: #45a049; /* Darker green on hover */
+    }
+  </style>
+</head>
+<body class="p-6">
+  <h1 class="text-2xl font-extrabold mb-6 text-gray-800 text-center">Wilayah dengan Checkbox dan Total</h1>
+
+  <div id="wilayah-container" class="space-y-8 max-w-4xl mx-auto">
+    <!-- Wilayah LINGSIR -->
+    <section data-wilayah="lingsir" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title lingsir" for="chk-lingsir">
+        <input type="checkbox" id="chk-lingsir" class="rounded-md" />
+        LINGSIR
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data for LINGSIR from CSV -->
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="195000" /> H.ROKIM</label></td><td>195000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="195000" /> KASDI YAYUK</label></td><td>195000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> MAUN</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="195000" /> UMAR</label></td><td>195000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> ELIS</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="195000" /> HENDRA</label></td><td>195000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="195000" /> NYAMAN</label></td><td>195000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> RAKIMEN</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> MAS WIN</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> ICA</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> MAS HIR</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> YOGA</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> ABAS</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> KAJI CUKUP</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> MUSLIATI</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> JUADI</label></td><td>165000</td></tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <!-- Wilayah Belahanrejo -->
+    <section data-wilayah="belahanrejo" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title belahanrejo" for="chk-belahanrejo">
+        <input type="checkbox" id="chk-belahanrejo" class="rounded-md" />
+        Belahanrejo
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data for Belahanrejo from CSV -->
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> KAJI SULIS</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> ENI LOUNDRI</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> MBAK TUN</label></td><td>165000</td></tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <!-- Wilayah Madureso -->
+    <section data-wilayah="madureso" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title madureso" for="chk-madureso">
+        <input type="checkbox" id="chk-madureso" class="rounded-md" />
+        Madureso
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data for Madureso from CSV -->
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> RISAL</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="100000" /> PAK CIKO</label></td><td>100000</td></tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <!-- Wilayah Magersari -->
+    <section data-wilayah="magersari" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title magersari" for="chk-magersari">
+        <input type="checkbox" id="chk-magersari" class="rounded-md" />
+        Magersari
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data for Magersari from CSV -->
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="150000" /> DEKI</label></td><td>150000</td></tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <!-- Wilayah PUCUK -->
+    <section data-wilayah="pucuk" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title pucuk" for="chk-pucuk">
+        <input type="checkbox" id="chk-pucuk" class="rounded-md" />
+        PUCUK
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data for PUCUK from CSV -->
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> DIAH KAHYIYANG</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> DIAH ABEL</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> SILVY</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> PAK KUS</label></td><td>165000</td></tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <!-- Wilayah Tanjung -->
+    <section data-wilayah="tanjung" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title tanjung" for="chk-tanjung">
+        <input type="checkbox" id="chk-tanjung" class="rounded-md" />
+        Tanjung
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data for Tanjung from CSV -->
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> MBAK SUM</label></td><td>165000</td></tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <!-- Wilayah Banyulegi -->
+    <section data-wilayah="banyulegi" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title banyulegi" for="chk-banyulegi">
+        <input type="checkbox" id="chk-banyulegi" class="rounded-md" />
+        Banyulegi
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data for Banyulegi from CSV -->
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="440000" /> SDN BANYUlEGI</label></td><td>440000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> Pak Surono</label></td><td>165000</td></tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <!-- Wilayah Brayublandong -->
+    <section data-wilayah="brayublandong" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title brayublandong" for="chk-brayublandong">
+        <input type="checkbox" id="chk-brayublandong" class="rounded-md" />
+        Brayublandong
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data for Brayublandong from CSV -->
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> EKO</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> IWAN BENGKEL</label></td><td>165000</td></tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <!-- Wilayah Sumberwuluh -->
+    <section data-wilayah="sumberwuluh" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title sumberwuluh" for="chk-sumberwuluh">
+        <input type="checkbox" id="chk-sumberwuluh" class="rounded-md" />
+        Sumberwuluh
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data for Sumberwuluh from CSV -->
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> KHOIRUMAN</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> MUNIR</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> EDI</label></td><td>165000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="100000" /> KAJI PARNO</label></td><td>100000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="100000" /> PAK MANSUR</label></td><td>100000</td></tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="100000" /> RISKA</label></td><td>100000</td></tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+  </div>
+
+  <!-- Grand Total Section -->
+  <div class="grand-total-section max-w-4xl mx-auto mt-8">
+    <h2>Total Keseluruhan</h2>
+    <div class="grand-total-amount">Rp <span id="grand-total-value">0</span></div>
+    <button id="export-excel-button" class="export-button">Ekspor ke Excel</button>
+  </div>
+
+  <script>
+    // Function to calculate total for each wilayah section
+    function calculateTotal(wilayahSection) {
+      let total = 0;
+      // Iterate over all checked customer checkboxes within the given section
+      wilayahSection.querySelectorAll('.customer-checkbox:checked').forEach(checkbox => {
+        // Add the nominal value (parsed as integer) to the total
+        total += parseInt(checkbox.getAttribute('data-nominal'));
+      });
+      // Update the text content of the total-sementara span
+      wilayahSection.querySelector('.total-sementara').textContent = total;
+      // After updating individual wilayah total, update the grand total
+      updateGrandTotal();
+    }
+
+    // Function to handle the main checkbox for each wilayah
+    function handleWilayahCheckbox(event) {
+      const wilayahSection = event.target.closest('section.wilayah-block');
+      const customerCheckboxes = wilayahSection.querySelectorAll('.customer-checkbox');
+      // Set the checked state of all customer checkboxes to match the main checkbox
+      customerCheckboxes.forEach(checkbox => {
+        checkbox.checked = event.target.checked;
+      });
+      // Recalculate the total for the section
+      calculateTotal(wilayahSection);
+    }
+
+    // Function to calculate and update the grand total
+    function updateGrandTotal() {
+      let grandTotal = 0;
+      // Iterate over all wilayah sections
+      document.querySelectorAll('section.wilayah-block').forEach(wilayahSection => {
+        // Get the current total-sementara value from each section
+        const totalSementaraElement = wilayahSection.querySelector('.total-sementara');
+        if (totalSementaraElement) {
+          grandTotal += parseInt(totalSementaraElement.textContent);
+        }
+      });
+      // Update the grand total display
+      document.getElementById('grand-total-value').textContent = grandTotal;
+    }
+
+    // Function to export selected data to XLSX (Excel compatible)
+    function exportToExcel() {
+      let dataToExport = []; // Array to hold data for SheetJS
+
+      // Add header row
+      dataToExport.push(["Nama", "Nominal", "Wilayah"]);
+
+      // Iterate over each wilayah section
+      document.querySelectorAll('section.wilayah-block').forEach(wilayahSection => {
+        const wilayahName = wilayahSection.getAttribute('data-wilayah').toUpperCase(); // Get wilayah name
+        // Iterate over checked customer checkboxes in this section
+        wilayahSection.querySelectorAll('.customer-checkbox:checked').forEach(checkbox => {
+          const customerName = checkbox.closest('label').textContent.trim(); // Get customer name
+          const nominal = parseInt(checkbox.getAttribute('data-nominal')); // Get nominal as number
+          dataToExport.push([customerName, nominal, wilayahName]); // Add row to data array
+        });
+      });
+
+      // Create a new workbook
+      const wb = XLSX.utils.book_new();
+      // Convert the array of arrays to a worksheet
+      const ws = XLSX.utils.aoa_to_sheet(dataToExport);
+      // Add the worksheet to the workbook
+      XLSX.utils.book_append_sheet(wb, ws, "Data Tagihan");
+
+      // Write the workbook to a file (XLSX format)
+      XLSX.writeFile(wb, "data_tagihan_wilayah.xlsx");
+    }
+
+    // Add event listeners to all customer checkboxes
+    document.querySelectorAll('.customer-checkbox').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        const wilayahSection = this.closest('section.wilayah-block');
+        // Recalculate total when a customer checkbox changes
+        calculateTotal(wilayahSection);
+
+        // Update the main wilayah checkbox state
+        const totalCustomers = wilayahSection.querySelectorAll('.customer-checkbox').length;
+        const checkedCustomers = wilayahSection.querySelectorAll('.customer-checkbox:checked').length;
+        // Set the main checkbox to checked if all customer checkboxes are checked, otherwise unchecked
+        wilayahSection.querySelector('input[type="checkbox"][id^="chk-"]').checked = totalCustomers === checkedCustomers;
+      });
+    });
+
+    // Add event listeners to all main wilayah checkboxes
+    document.querySelectorAll('input[type="checkbox"][id^="chk-"]').forEach(mainCheckbox => {
+      mainCheckbox.addEventListener('change', handleWilayahCheckbox);
+    });
+
+    // Initial calculation for all sections and grand total on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('section.wilayah-block').forEach(section => {
+        calculateTotal(section); // This will also trigger updateGrandTotal
+      });
+      // Ensure grand total is calculated even if no checkboxes are checked initially
+      updateGrandTotal();
+    });
+
+    // Add event listener to the Export to Excel button
+    document.getElementById('export-excel-button').addEventListener('click', exportToExcel);
+  </script>
+</body>
+</html>
