@@ -123,14 +123,12 @@
   </style>
 </head>
 <body class="p-6">
-  <h1 class="text-2xl font-extrabold mb-6 text-gray-800 text-center">INISAJA INVOICE</h1>
+  <h1 class="text-2xl font-extrabold mb-6 text-gray-800 text-center">Wilayah dengan Checkbox dan Total</h1>
   <div class="text-center mb-6 text-gray-600">
     <p>Tanggal Saat Ini: <span id="current-date"></span></p>
   </div>
 
   <div id="wilayah-container" class="space-y-8 max-w-4xl mx-auto">
-    <!-- Sections for each wilayah go here -->
-    <!-- Example section -->
     <section data-wilayah="lingsir" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
       <label class="checkbox-label wilayah-title lingsir" for="chk-lingsir">
         <input type="checkbox" id="chk-lingsir" class="rounded-md" />
@@ -145,9 +143,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="195000" /> H.ROKIM</label></td>
-            <td>195000</td>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="195000" /> H.ROKIM</label></td><td>195000</td>
             <td>
               <div class="payment-options">
                 <label><input type="radio" name="payment-H.ROKIM" value="Cash" class="payment-type" /> Cash</label>
@@ -155,14 +151,490 @@
               </div>
             </td>
           </tr>
-          <!-- More rows as needed -->
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="195000" /> KASDI YAYUK</label></td><td>195000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-KASDI YAYUK" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-KASDI YAYUK" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> MAUN</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-MAUN" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-MAUN" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="195000" /> UMAR</label></td><td>195000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-UMAR" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-UMAR" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> ELIS</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-ELIS" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-ELIS" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="195000" /> HENDRA</label></td><td>195000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-HENDRA" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-HENDRA" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="195000" /> NYAMAN</label></td><td>195000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-NYAMAN" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-NYAMAN" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> RAKIMEN</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-RAKIMEN" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-RAKIMEN" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> MAS WIN</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-MAS WIN" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-MAS WIN" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> ICA</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-ICA" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-ICA" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> MAS HIR</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-MAS HIR" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-MAS HIR" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> YOGA</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-YOGA" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-YOGA" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> ABAS</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-ABAS" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-ABAS" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> KAJI CUKUP</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-KAJI CUKUP" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-KAJI CUKUP" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> MUSLIATI</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-MUSLIATI" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-MUSLIATI" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> JUADI</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-JUADI" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-JUADI" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
         </tbody>
         <tfoot>
           <tr class="total-row"><td>Total Sementara:</td><td></td><td class="total-sementara">0</td></tr>
         </tfoot>
       </table>
     </section>
-    <!-- Repeat sections for other wilayahs -->
+
+    <section data-wilayah="belahanrejo" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title belahanrejo" for="chk-belahanrejo">
+        <input type="checkbox" id="chk-belahanrejo" class="rounded-md" />
+        Belahanrejo
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+            <th>Pembayaran</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> KAJI SULIS</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-KAJI SULIS" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-KAJI SULIS" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> ENI LOUNDRI</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-ENI LOUNDRI" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-ENI LOUNDRI" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> MBAK TUN</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-MBAK TUN" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-MBAK TUN" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td></td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <section data-wilayah="madureso" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title madureso" for="chk-madureso">
+        <input type="checkbox" id="chk-madureso" class="rounded-md" />
+        Madureso
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+            <th>Pembayaran</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> RISAL</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-RISAL" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-RISAL" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="100000" /> PAK CIKO</label></td><td>100000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-PAK CIKO" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-PAK CIKO" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td></td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <section data-wilayah="magersari" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title magersari" for="chk-magersari">
+        <input type="checkbox" id="chk-magersari" class="rounded-md" />
+        Magersari
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+            <th>Pembayaran</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="150000" /> DEKI</label></td><td>150000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-DEKI" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-DEKI" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td></td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <section data-wilayah="pucuk" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title pucuk" for="chk-pucuk">
+        <input type="checkbox" id="chk-pucuk" class="rounded-md" />
+        PUCUK
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+            <th>Pembayaran</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> DIAH KAHYIYANG</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-DIAH KAHYIYANG" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-DIAH KAHYIYANG" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> DIAH ABEL</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-DIAH ABEL" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-DIAH ABEL" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> SILVY</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-SILVY" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-SILVY" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> PAK KUS</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-PAK KUS" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-PAK KUS" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td></td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <section data-wilayah="tanjung" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title tanjung" for="chk-tanjung">
+        <input type="checkbox" id="chk-tanjung" class="rounded-md" />
+        Tanjung
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+            <th>Pembayaran</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> MBAK SUM</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-MBAK SUM" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-MBAK SUM" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td></td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <section data-wilayah="banyulegi" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title banyulegi" for="chk-banyulegi">
+        <input type="checkbox" id="chk-banyulegi" class="rounded-md" />
+        Banyulegi
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+            <th>Pembayaran</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="440000" /> SDN BANYUlEGI</label></td><td>440000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-SDN BANYUlEGI" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-SDN BANYUlEGI" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td></td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <section data-wilayah="sekiping" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title sekiping" for="chk-sekiping">
+        <input type="checkbox" id="chk-sekiping" class="rounded-md" />
+        Sekiping
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+            <th>Pembayaran</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> Pak Surono</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-Pak Surono" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-Pak Surono" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td></td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <section data-wilayah="brayublandong" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title brayublandong" for="chk-brayublandong">
+        <input type="checkbox" id="chk-brayublandong" class="rounded-md" />
+        Brayublandong
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+            <th>Pembayaran</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> EKO</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-EKO" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-EKO" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> IWAN BENGKEL</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-IWAN BENGKEL" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-IWAN BENGKEL" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td></td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <section data-wilayah="sumberwuluh" class="wilayah-block border rounded-md p-4 bg-white shadow-sm">
+      <label class="checkbox-label wilayah-title sumberwuluh" for="chk-sumberwuluh">
+        <input type="checkbox" id="chk-sumberwuluh" class="rounded-md" />
+        Sumberwuluh
+      </label>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Nominal</th>
+            <th>Pembayaran</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> KHOIRUMAN</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-KHOIRUMAN" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-KHOIRUMAN" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> MUNIR</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-MUNIR" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-MUNIR" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="165000" /> EDI</label></td><td>165000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-EDI" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-EDI" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="100000" /> KAJI PARNO</label></td><td>100000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-KAJI PARNO" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-KAJI PARNO" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="100000" /> PAK MANSUR</label></td><td>100000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-PAK MANSUR" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-PAK MANSUR" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+          <tr><td><label><input type="checkbox" class="customer-checkbox rounded-md" data-nominal="100000" /> RISKA</label></td><td>100000</td>
+            <td>
+              <div class="payment-options">
+                <label><input type="radio" name="payment-RISKA" value="Cash" class="payment-type" /> Cash</label>
+                <label><input type="radio" name="payment-RISKA" value="TF" class="payment-type" /> TF</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row"><td>Total Sementara:</td><td></td><td class="total-sementara">0</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
   </div>
 
   <div class="grand-total-section max-w-4xl mx-auto mt-8">
@@ -184,10 +656,14 @@
     // Function to calculate total for each wilayah section
     function calculateTotal(wilayahSection) {
       let total = 0;
+      // Iterate over all checked customer checkboxes within the given section
       wilayahSection.querySelectorAll('.customer-checkbox:checked').forEach(checkbox => {
+        // Add the nominal value (parsed as integer) to the total
         total += parseInt(checkbox.getAttribute('data-nominal'));
       });
+      // Update the text content of the total-sementara span
       wilayahSection.querySelector('.total-sementara').textContent = total;
+      // After updating individual wilayah total, update the grand total
       updateGrandTotal();
     }
 
@@ -201,64 +677,82 @@
         checkbox.checked = isChecked;
         const paymentRadios = checkbox.closest('tr').querySelectorAll('.payment-type');
         if (isChecked) {
+          // If the customer checkbox is checked by the main wilayah checkbox,
+          // automatically select 'Cash' as the default payment type.
           if (paymentRadios.length > 0) {
             paymentRadios[0].checked = true; // Select 'Cash'
           }
         } else {
+          // If the customer checkbox is unchecked, uncheck all payment types
           paymentRadios.forEach(radio => radio.checked = false);
         }
       });
+      // Recalculate the total for the section
       calculateTotal(wilayahSection);
     }
 
     // Function to calculate and update the grand total
     function updateGrandTotal() {
       let grandTotal = 0;
+      // Iterate over all wilayah sections
       document.querySelectorAll('section.wilayah-block').forEach(wilayahSection => {
+        // Get the current total-sementara value from each section
         const totalSementaraElement = wilayahSection.querySelector('.total-sementara');
         if (totalSementaraElement) {
           grandTotal += parseInt(totalSementaraElement.textContent);
         }
       });
+      // Update the grand total display
       document.getElementById('grand-total-value').textContent = grandTotal;
     }
 
     // Function to export selected data to XLSX (Excel compatible)
     function exportToExcel() {
-      let dataToExport = [];
+      let dataToExport = []; // Array to hold data for SheetJS
+
+      // Add header row
       dataToExport.push(["Nama", "Nominal", "Pembayaran", "Wilayah", "Tanggal"]);
+
+      // Get current date for the export
       const exportDate = formatDate(new Date());
 
+      // Iterate over each wilayah section
       document.querySelectorAll('section.wilayah-block').forEach(wilayahSection => {
-        const wilayahName = wilayahSection.getAttribute('data-wilayah').toUpperCase();
+        const wilayahName = wilayahSection.getAttribute('data-wilayah').toUpperCase(); // Get wilayah name
+        // Iterate over checked customer checkboxes in this section
         wilayahSection.querySelectorAll('.customer-checkbox:checked').forEach(checkbox => {
-          const customerName = checkbox.closest('label').textContent.trim();
-          const nominal = parseInt(checkbox.getAttribute('data-nominal'));
-          const paymentType = checkbox.closest('tr').querySelector('.payment-type:checked')?.value || 'N/A';
-          dataToExport.push([customerName, nominal, paymentType, wilayahName, exportDate]);
+          const customerName = checkbox.closest('label').textContent.trim(); // Get customer name
+          const nominal = parseInt(checkbox.getAttribute('data-nominal')); // Get nominal as number
+          const paymentType = checkbox.closest('tr').querySelector('.payment-type:checked')?.value || 'N/A'; // Get selected payment type
+
+          dataToExport.push([customerName, nominal, paymentType, wilayahName, exportDate]); // Add row to data array
         });
       });
 
+      // Create a new workbook
       const wb = XLSX.utils.book_new();
+      // Convert the array of arrays to a worksheet
       const ws = XLSX.utils.aoa_to_sheet(dataToExport);
+      // Add the worksheet to the workbook
       XLSX.utils.book_append_sheet(wb, ws, "Data Tagihan");
-      XLSX.writeFile(wb, "data_tagihan_wilayah.xlsx");
 
-      // Send WhatsApp message after exporting
-      const message = encodeURIComponent("Halo! 🙏\nKami ingin menginformasikan bahwa tagihan untuk bulan ini sudah kami kirimkan. Silakan dicek ya. Bila ada pertanyaan atau membutuhkan bantuan, jangan ragu untuk menghubungi kami.\nTerima kasih atas kerjasamanya. 😊");
-      const phoneNumber = "6285730106576";
-      window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+      // Write the workbook to a file (XLSX format)
+      XLSX.writeFile(wb, "data_tagihan_wilayah.xlsx");
     }
 
     // Add event listeners to all customer checkboxes
     document.querySelectorAll('.customer-checkbox').forEach(checkbox => {
       checkbox.addEventListener('change', function() {
         const wilayahSection = this.closest('section.wilayah-block');
+        // Recalculate total when a customer checkbox changes
         calculateTotal(wilayahSection);
+
+        // Update the main wilayah checkbox state
         const totalCustomers = wilayahSection.querySelectorAll('.customer-checkbox').length;
         const checkedCustomers = wilayahSection.querySelectorAll('.customer-checkbox:checked').length;
         wilayahSection.querySelector('input[type="checkbox"][id^="chk-"]').checked = totalCustomers === checkedCustomers;
 
+        // If a customer checkbox is unchecked, also uncheck its associated payment radios
         if (!this.checked) {
           this.closest('tr').querySelectorAll('.payment-type').forEach(radio => radio.checked = false);
         }
@@ -269,10 +763,11 @@
     document.querySelectorAll('.payment-type').forEach(radio => {
       radio.addEventListener('change', function() {
         const customerCheckbox = this.closest('tr').querySelector('.customer-checkbox');
+        // If a payment type is selected, ensure the customer checkbox is checked
         if (this.checked) {
           customerCheckbox.checked = true;
           const wilayahSection = this.closest('section.wilayah-block');
-          calculateTotal(wilayahSection);
+          calculateTotal(wilayahSection); // Recalculate total
         }
       });
     });
@@ -285,8 +780,9 @@
     // Initial calculation for all sections and grand total on page load
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('section.wilayah-block').forEach(section => {
-        calculateTotal(section);
+        calculateTotal(section); // This will also trigger updateGrandTotal
       });
+      // Ensure grand total is calculated even if no checkboxes are checked initially
       updateGrandTotal();
     });
 
